@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+tmp/
+
+# Generated analysis outputs
+data/reproduced/
+
+# Raw trajectories are archived separately and must never enter normal Git history.
+data/raw/*
+!data/raw/README.md
+
+# Journal-submission materials and generated figures must remain outside Git.
+/manuscript/
+/figures/
+/submission/
+/attachments/
+/draft_history/
+*.lab-prep-*.bak
+/LOCAL_STRUCTURE_FA.md
+/MANIFEST_BEFORE_MANUSCRIPT_LINK.sha256
+/ORGANIZATION_RECORD.json
+/PACKAGE_CONTENTS_FA.md
+/PUBLICATION_CHECKLIST.md
+*.pdf
+*.tex
+*.bib
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.eps
+*.tif
+*.tiff
+
+# IDE and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Rebuildable local auxiliaries.
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.blg
+__pycache__/

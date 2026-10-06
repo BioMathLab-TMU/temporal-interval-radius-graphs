@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "temporal-interval-radius-graphs"
+version = "0.1.0"
+description = "Exact graph envelopes and stability tools for temporal proximity graphs with interval-valued node radii"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  {name = "Shokoofeh Akbari", email = "shokoofe.akbari1997@gmail.com"},
+  {name = "Yousef Jamali", email = "y.jamali@modares.ac.ir"},
+]
+dependencies = [
+  "numpy>=1.26,<3",
+  "scipy>=1.11,<2",
+]
+
+[project.optional-dependencies]
+analysis = [
+  "h5py>=3.10,<4",
+  "matplotlib>=3.8,<4",
+  "pandas>=2.0,<3",
+]
+
+[project.urls]
+Repository = "https://github.com/BioMathLab-TMU/temporal-interval-radius-graphs"
+
+[tool.setuptools]
+py-modules = ["interval_radius_graph"]
+package-dir = {"" = "src"}

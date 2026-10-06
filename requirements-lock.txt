@@ -1,0 +1,6 @@
+# Environment used to validate the release on 2026-09-29 with Python 3.12.14.
+numpy==2.5.3
+scipy==1.18.1
+pandas==2.3.3
+h5py==3.16.0
+matplotlib==3.11.2
