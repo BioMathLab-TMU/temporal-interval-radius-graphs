@@ -156,6 +156,37 @@ benchmark does not claim a universal speedup.
 
 See `REPRODUCIBILITY.md` and `DATA_DICTIONARY.md` for the full contract.
 
+## Compare with radius sampling and a common cutoff
+
+```bash
+python analysis/compare_radius_uncertainty_baselines.py \
+  --input-root /path/to/raw/article-runs --draws 64 \
+  --output data/derived/radius_baseline_comparison.json
+```
+
+The script checks all 15 raw HDF5 hashes, draws independent uniform radii
+within the declared intervals, and verifies every sampled edge set lies
+between the exact endpoint edge sets. It also chooses one scalar cutoff per
+frame to match the possible-edge count and reports the symmetric difference
+of edge identities. Neither comparator estimates a biological radius law.
+
+## Independent microscopy-mask application
+
+The public BBBC039v1 mask archive is kept outside this repository. Its
+official source is `https://data.broadinstitute.org/bbbc/BBBC039/masks.zip`
+and its expected SHA-256 is recorded in the analysis script. Reproduce the
+per-field analysis with:
+
+```bash
+python analysis/analyze_bbbc039_masks.py \
+  --masks-zip /path/to/BBBC039/masks.zip \
+  --output data/derived/bbbc039_radius_graph.json
+```
+
+The code uses independently annotated two-dimensional nuclei masks as
+spatial input. Equivalent-circle radii and a 10% interval are explicit
+analysis choices, not measured uncertainties in the original dataset.
+
 ## Reproduce the pair-search benchmark
 
 With the raw trajectories placed under the path layout described above, run:

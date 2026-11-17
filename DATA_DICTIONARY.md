@@ -93,3 +93,24 @@ repetitions each; their corresponding median fields are in seconds.
 `median_time_ratio_repeated_over_sweep` is the ratio of the two medians, with
 values above one favouring the event sweep. File read and hashing are excluded
 from timing. The comparison is workload- and implementation-specific.
+
+## `data/derived/radius_baseline_comparison.json`
+
+One middle frame per hash-verified HDF5 run, using a 0.10 radius half-width
+for type-1 nodes and a 2 nm surface-gap threshold. Each record includes the
+exact endpoint edge counts and largest-component fractions, the minimum and
+maximum over 64 seeded independent uniform radius draws, and a scalar cutoff
+calibrated to the possible graph's edge count. The scalar edge disagreement
+is the symmetric difference between its selected pair set and the possible
+pair set. The uniform law and scalar cutoff are illustrative comparators,
+not inferred physical size laws or admissible radius trajectories.
+
+## `data/derived/bbbc039_radius_graph.json`
+
+Independent external application to the public BBBC039v1 nuclei-mask
+archive. The record stores the official source URL, SHA-256 digest, CC0
+status, decoding rule, 200 image identifiers, per-image object counts,
+and endpoint edge/component summaries at 0 and 2 pixel surface gaps.
+Three fields have fewer than two decoded objects and therefore have no
+graph summaries. Equivalent-circle radii are computed from segmented pixel
+areas; the 10% interval is a declared sensitivity scenario.

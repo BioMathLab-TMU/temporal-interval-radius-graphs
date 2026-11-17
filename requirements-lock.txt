@@ -1,6 +1,8 @@
-# Environment used to validate the release on 2026-09-29 with Python 3.12.14.
+# Original core validation pins (2026-09-29, Python 3.12.14).
+# Pillow pin added for the BBBC039 mask decoder on 2026-11-17.
 numpy==2.5.3
 scipy==1.18.1
 pandas==2.3.3
 h5py==3.16.0
 matplotlib==3.11.2
+Pillow==10.4.0

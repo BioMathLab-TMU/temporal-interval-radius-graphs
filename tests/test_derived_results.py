@@ -131,6 +131,32 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
                 row["repeated_csr_median_seconds"] / row["width_sweep_median_seconds"],
             )
 
+    def test_radius_baselines_respect_exact_envelopes(self) -> None:
+        report = json.loads((RESULTS / "radius_baseline_comparison.json").read_text(encoding="utf-8"))
+        self.assertEqual(report["schema"], "radius-baselines-1")
+        self.assertTrue(report["source_hashes_checked"])
+        records = report["records"]
+        self.assertEqual(len(records), 15)
+        self.assertEqual(len({record["run_id"] for record in records}), 15)
+        self.assertTrue(any(row["scalar_edge_disagreement"] > 0 for row in records))
+        for row in records:
+            self.assertEqual(row["draws"], 64)
+            self.assertTrue(row["guaranteed_edges"] <= row["sample_edge_min"] <= row["sample_edge_max"] <= row["possible_edges"])
+            self.assertTrue(row["guaranteed_lcc"] <= row["sample_lcc_min"] <= row["sample_lcc_max"] <= row["possible_lcc"])
+            self.assertEqual(row["scalar_edges"], row["possible_edges"])
+
+    def test_independent_mask_case_study_contract(self) -> None:
+        report = json.loads((RESULTS / "bbbc039_radius_graph.json").read_text(encoding="utf-8"))
+        self.assertEqual(report["schema"], "bbbc039-radius-graph-1")
+        self.assertEqual(report["image_count"], 200)
+        self.assertEqual(sum(row["n_objects"] for row in report["records"]), 23615)
+        self.assertEqual(sum(row["n_objects"] >= 2 for row in report["records"]), 197)
+        for row in report["records"]:
+            for item in row["thresholds"]:
+                self.assertLessEqual(item["guaranteed_edges"], item["possible_edges"])
+                self.assertGreaterEqual(item["guaranteed_components"], item["possible_components"])
+                self.assertLessEqual(item["guaranteed_lcc"], item["possible_lcc"])
+
 
 if __name__ == "__main__":
     unittest.main()
