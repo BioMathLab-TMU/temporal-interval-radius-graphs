@@ -1,0 +1,1230 @@
+{
+  "schema": "critical-width-analysis-1",
+  "widths": [
+    0.0,
+    0.025,
+    0.05,
+    0.1
+  ],
+  "threshold_nm": 2.0,
+  "frame_selection": "middle saved frame of every manifest run",
+  "source_hashes_checked": true,
+  "independent_endpoint_checks": true,
+  "records": [
+    {
+      "run_id": "article_s1_p1_finite_high_attraction_V_0p05_seed_9210001",
+      "source_sha256": "4417b3a6e109fb6da41d0a5f339e15dad1b77e252ee9ef51d632d474a547a680",
+      "frame": "step_20200",
+      "n_nodes": 3713,
+      "candidate_pairs": 548327,
+      "possible_edge_birth_events": 797,
+      "guaranteed_edge_exit_events": 820,
+      "critical_width_count": 1619,
+      "possible_component_merger_events": 3,
+      "guaranteed_component_split_events": 5,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 12026,
+            "components": 267,
+            "largest_component": 3439,
+            "isolated_nodes": 259
+          },
+          "possible": {
+            "edges": 12026,
+            "components": 267,
+            "largest_component": 3439,
+            "isolated_nodes": 259
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 11805,
+            "components": 268,
+            "largest_component": 3439,
+            "isolated_nodes": 261
+          },
+          "possible": {
+            "edges": 12203,
+            "components": 266,
+            "largest_component": 3440,
+            "isolated_nodes": 258
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 11598,
+            "components": 269,
+            "largest_component": 3438,
+            "isolated_nodes": 262
+          },
+          "possible": {
+            "edges": 12406,
+            "components": 265,
+            "largest_component": 3440,
+            "isolated_nodes": 256
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 11206,
+            "components": 272,
+            "largest_component": 3437,
+            "isolated_nodes": 267
+          },
+          "possible": {
+            "edges": 12823,
+            "components": 264,
+            "largest_component": 3441,
+            "isolated_nodes": 255
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 1609,
+        "ambiguous_edges_between_guaranteed_components": 8,
+        "guaranteed_components": 272,
+        "possible_components": 264,
+        "component_mergers": 8
+      }
+    },
+    {
+      "run_id": "article_s1_p1_finite_high_attraction_V_0p05_seed_9210003",
+      "source_sha256": "7fd23f996ac30aa2f45051e58915c7a516d6f41c4fd6965faf7f4178c2e7f631",
+      "frame": "step_20200",
+      "n_nodes": 3713,
+      "candidate_pairs": 517295,
+      "possible_edge_birth_events": 794,
+      "guaranteed_edge_exit_events": 716,
+      "critical_width_count": 1512,
+      "possible_component_merger_events": 5,
+      "guaranteed_component_split_events": 2,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 11623,
+            "components": 253,
+            "largest_component": 3453,
+            "isolated_nodes": 244
+          },
+          "possible": {
+            "edges": 11623,
+            "components": 253,
+            "largest_component": 3453,
+            "isolated_nodes": 244
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 11450,
+            "components": 254,
+            "largest_component": 3453,
+            "isolated_nodes": 246
+          },
+          "possible": {
+            "edges": 11813,
+            "components": 253,
+            "largest_component": 3453,
+            "isolated_nodes": 244
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 11265,
+            "components": 254,
+            "largest_component": 3453,
+            "isolated_nodes": 246
+          },
+          "possible": {
+            "edges": 12019,
+            "components": 252,
+            "largest_component": 3453,
+            "isolated_nodes": 242
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 10907,
+            "components": 255,
+            "largest_component": 3452,
+            "isolated_nodes": 247
+          },
+          "possible": {
+            "edges": 12417,
+            "components": 248,
+            "largest_component": 3456,
+            "isolated_nodes": 237
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 1503,
+        "ambiguous_edges_between_guaranteed_components": 7,
+        "guaranteed_components": 255,
+        "possible_components": 248,
+        "component_mergers": 7
+      }
+    },
+    {
+      "run_id": "article_s1_p1_finite_high_attraction_V_0p2_seed_9210001",
+      "source_sha256": "cfde6559c81df45946fd6af94fc9b1d0a0488cfa5017aa458df3ad5c0402c1f9",
+      "frame": "step_20200",
+      "n_nodes": 14853,
+      "candidate_pairs": 1520726,
+      "possible_edge_birth_events": 2605,
+      "guaranteed_edge_exit_events": 2483,
+      "critical_width_count": 5090,
+      "possible_component_merger_events": 25,
+      "guaranteed_component_split_events": 30,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 39536,
+            "components": 1356,
+            "largest_component": 12992,
+            "isolated_nodes": 1297
+          },
+          "possible": {
+            "edges": 39536,
+            "components": 1356,
+            "largest_component": 12992,
+            "isolated_nodes": 1297
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 38879,
+            "components": 1362,
+            "largest_component": 12989,
+            "isolated_nodes": 1306
+          },
+          "possible": {
+            "edges": 40193,
+            "components": 1349,
+            "largest_component": 12997,
+            "isolated_nodes": 1288
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 38278,
+            "components": 1370,
+            "largest_component": 12985,
+            "isolated_nodes": 1317
+          },
+          "possible": {
+            "edges": 40831,
+            "components": 1340,
+            "largest_component": 13003,
+            "isolated_nodes": 1276
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 37053,
+            "components": 1386,
+            "largest_component": 12972,
+            "isolated_nodes": 1335
+          },
+          "possible": {
+            "edges": 42141,
+            "components": 1331,
+            "largest_component": 13009,
+            "isolated_nodes": 1265
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 5020,
+        "ambiguous_edges_between_guaranteed_components": 68,
+        "guaranteed_components": 1386,
+        "possible_components": 1331,
+        "component_mergers": 55
+      }
+    },
+    {
+      "run_id": "article_s1_p1_finite_high_attraction_V_0p2_seed_9210003",
+      "source_sha256": "f367c6d25193d11baf826a513c48b5fa409558966a145f7a045e70eb70cdd8f9",
+      "frame": "step_20200",
+      "n_nodes": 14853,
+      "candidate_pairs": 1446554,
+      "possible_edge_birth_events": 2610,
+      "guaranteed_edge_exit_events": 2449,
+      "critical_width_count": 5061,
+      "possible_component_merger_events": 35,
+      "guaranteed_component_split_events": 35,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 38663,
+            "components": 1291,
+            "largest_component": 13165,
+            "isolated_nodes": 1235
+          },
+          "possible": {
+            "edges": 38663,
+            "components": 1291,
+            "largest_component": 13165,
+            "isolated_nodes": 1235
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 38064,
+            "components": 1303,
+            "largest_component": 13159,
+            "isolated_nodes": 1253
+          },
+          "possible": {
+            "edges": 39326,
+            "components": 1285,
+            "largest_component": 13170,
+            "isolated_nodes": 1229
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 37447,
+            "components": 1311,
+            "largest_component": 13150,
+            "isolated_nodes": 1260
+          },
+          "possible": {
+            "edges": 39963,
+            "components": 1275,
+            "largest_component": 13179,
+            "isolated_nodes": 1219
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 36214,
+            "components": 1326,
+            "largest_component": 13136,
+            "isolated_nodes": 1276
+          },
+          "possible": {
+            "edges": 41273,
+            "components": 1256,
+            "largest_component": 13190,
+            "isolated_nodes": 1193
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 4975,
+        "ambiguous_edges_between_guaranteed_components": 84,
+        "guaranteed_components": 1326,
+        "possible_components": 1256,
+        "component_mergers": 70
+      }
+    },
+    {
+      "run_id": "article_s1_p1_finite_low_attraction_V_0p05_seed_9210002",
+      "source_sha256": "3ea199133e01e3fd5c845271f429550d6322803af0a2aa43766bb3524b8ca8d9",
+      "frame": "step_20200",
+      "n_nodes": 3713,
+      "candidate_pairs": 418753,
+      "possible_edge_birth_events": 840,
+      "guaranteed_edge_exit_events": 814,
+      "critical_width_count": 1656,
+      "possible_component_merger_events": 16,
+      "guaranteed_component_split_events": 10,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 10430,
+            "components": 327,
+            "largest_component": 3372,
+            "isolated_nodes": 311
+          },
+          "possible": {
+            "edges": 10430,
+            "components": 327,
+            "largest_component": 3372,
+            "isolated_nodes": 311
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 10216,
+            "components": 330,
+            "largest_component": 3369,
+            "isolated_nodes": 314
+          },
+          "possible": {
+            "edges": 10627,
+            "components": 323,
+            "largest_component": 3374,
+            "isolated_nodes": 305
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 10020,
+            "components": 332,
+            "largest_component": 3368,
+            "isolated_nodes": 317
+          },
+          "possible": {
+            "edges": 10829,
+            "components": 318,
+            "largest_component": 3378,
+            "isolated_nodes": 299
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 9616,
+            "components": 337,
+            "largest_component": 3366,
+            "isolated_nodes": 325
+          },
+          "possible": {
+            "edges": 11270,
+            "components": 311,
+            "largest_component": 3382,
+            "isolated_nodes": 290
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 1624,
+        "ambiguous_edges_between_guaranteed_components": 30,
+        "guaranteed_components": 337,
+        "possible_components": 311,
+        "component_mergers": 26
+      }
+    },
+    {
+      "run_id": "article_s1_p1_finite_low_attraction_V_0p2_seed_9210002",
+      "source_sha256": "3f92f32a3445cb75409803a97fa2a4351642423822d421cf4dae6b9f091d3998",
+      "frame": "step_20200",
+      "n_nodes": 14853,
+      "candidate_pairs": 1429610,
+      "possible_edge_birth_events": 2571,
+      "guaranteed_edge_exit_events": 2588,
+      "critical_width_count": 5161,
+      "possible_component_merger_events": 64,
+      "guaranteed_component_split_events": 58,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 34284,
+            "components": 1935,
+            "largest_component": 12607,
+            "isolated_nodes": 1813
+          },
+          "possible": {
+            "edges": 34284,
+            "components": 1935,
+            "largest_component": 12607,
+            "isolated_nodes": 1813
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 33684,
+            "components": 1945,
+            "largest_component": 12601,
+            "isolated_nodes": 1826
+          },
+          "possible": {
+            "edges": 34927,
+            "components": 1918,
+            "largest_component": 12617,
+            "isolated_nodes": 1793
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 33033,
+            "components": 1961,
+            "largest_component": 12589,
+            "isolated_nodes": 1845
+          },
+          "possible": {
+            "edges": 35555,
+            "components": 1905,
+            "largest_component": 12627,
+            "isolated_nodes": 1778
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 31696,
+            "components": 1993,
+            "largest_component": 12570,
+            "isolated_nodes": 1889
+          },
+          "possible": {
+            "edges": 36855,
+            "components": 1871,
+            "largest_component": 12654,
+            "isolated_nodes": 1735
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 5014,
+        "ambiguous_edges_between_guaranteed_components": 145,
+        "guaranteed_components": 1993,
+        "possible_components": 1871,
+        "component_mergers": 122
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p075_H_reference_seed_9210001",
+      "source_sha256": "4c90e6d2baa1d3756b78246bb3d9b746810fe7e0061d97bf85d9b8b55c48b9f2",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 836965,
+      "possible_edge_birth_events": 1412,
+      "guaranteed_edge_exit_events": 1291,
+      "critical_width_count": 2705,
+      "possible_component_merger_events": 15,
+      "guaranteed_component_split_events": 11,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 20872,
+            "components": 654,
+            "largest_component": 6753,
+            "isolated_nodes": 633
+          },
+          "possible": {
+            "edges": 20872,
+            "components": 654,
+            "largest_component": 6753,
+            "isolated_nodes": 633
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 20561,
+            "components": 657,
+            "largest_component": 6751,
+            "isolated_nodes": 637
+          },
+          "possible": {
+            "edges": 21205,
+            "components": 651,
+            "largest_component": 6757,
+            "isolated_nodes": 631
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 20229,
+            "components": 658,
+            "largest_component": 6751,
+            "isolated_nodes": 639
+          },
+          "possible": {
+            "edges": 21553,
+            "components": 649,
+            "largest_component": 6759,
+            "isolated_nodes": 629
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 19581,
+            "components": 665,
+            "largest_component": 6745,
+            "isolated_nodes": 647
+          },
+          "possible": {
+            "edges": 22284,
+            "components": 639,
+            "largest_component": 6765,
+            "isolated_nodes": 615
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2676,
+        "ambiguous_edges_between_guaranteed_components": 27,
+        "guaranteed_components": 665,
+        "possible_components": 639,
+        "component_mergers": 26
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p075_H_reference_seed_9210003",
+      "source_sha256": "5339cc2a75890c4a145718d16d64c388ba973166ae1bf3c7372d12b15863d88d",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 743577,
+      "possible_edge_birth_events": 1317,
+      "guaranteed_edge_exit_events": 1249,
+      "critical_width_count": 2568,
+      "possible_component_merger_events": 13,
+      "guaranteed_component_split_events": 11,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 20200,
+            "components": 611,
+            "largest_component": 6715,
+            "isolated_nodes": 586
+          },
+          "possible": {
+            "edges": 20200,
+            "components": 611,
+            "largest_component": 6715,
+            "isolated_nodes": 586
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 19898,
+            "components": 615,
+            "largest_component": 6712,
+            "isolated_nodes": 590
+          },
+          "possible": {
+            "edges": 20529,
+            "components": 606,
+            "largest_component": 6719,
+            "isolated_nodes": 580
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 19582,
+            "components": 616,
+            "largest_component": 6711,
+            "isolated_nodes": 591
+          },
+          "possible": {
+            "edges": 20846,
+            "components": 603,
+            "largest_component": 6721,
+            "isolated_nodes": 576
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 18951,
+            "components": 622,
+            "largest_component": 6706,
+            "isolated_nodes": 597
+          },
+          "possible": {
+            "edges": 21517,
+            "components": 598,
+            "largest_component": 6724,
+            "isolated_nodes": 571
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2536,
+        "ambiguous_edges_between_guaranteed_components": 30,
+        "guaranteed_components": 622,
+        "possible_components": 598,
+        "component_mergers": 24
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p075_H_weak_seed_9210003",
+      "source_sha256": "f6621789dfff3c4b8339ead237284a6fbd69edbf71fd678c68528738da744494",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 692861,
+      "possible_edge_birth_events": 1253,
+      "guaranteed_edge_exit_events": 1146,
+      "critical_width_count": 2401,
+      "possible_component_merger_events": 36,
+      "guaranteed_component_split_events": 34,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 16453,
+            "components": 879,
+            "largest_component": 6491,
+            "isolated_nodes": 843
+          },
+          "possible": {
+            "edges": 16453,
+            "components": 879,
+            "largest_component": 6491,
+            "isolated_nodes": 843
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 16128,
+            "components": 887,
+            "largest_component": 6485,
+            "isolated_nodes": 853
+          },
+          "possible": {
+            "edges": 16765,
+            "components": 870,
+            "largest_component": 6500,
+            "isolated_nodes": 834
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 15848,
+            "components": 897,
+            "largest_component": 6474,
+            "isolated_nodes": 862
+          },
+          "possible": {
+            "edges": 17068,
+            "components": 861,
+            "largest_component": 6506,
+            "isolated_nodes": 823
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 15307,
+            "components": 913,
+            "largest_component": 6459,
+            "isolated_nodes": 879
+          },
+          "possible": {
+            "edges": 17706,
+            "components": 843,
+            "largest_component": 6525,
+            "isolated_nodes": 806
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2313,
+        "ambiguous_edges_between_guaranteed_components": 86,
+        "guaranteed_components": 913,
+        "possible_components": 843,
+        "component_mergers": 70
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p15_H_reference_seed_9210001",
+      "source_sha256": "44bf51092c1033543678dfcf5eb91308ffde71583334ab867ef054cd69252ee5",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 842795,
+      "possible_edge_birth_events": 1361,
+      "guaranteed_edge_exit_events": 1320,
+      "critical_width_count": 2683,
+      "possible_component_merger_events": 12,
+      "guaranteed_component_split_events": 14,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 21261,
+            "components": 616,
+            "largest_component": 6754,
+            "isolated_nodes": 582
+          },
+          "possible": {
+            "edges": 21261,
+            "components": 616,
+            "largest_component": 6754,
+            "isolated_nodes": 582
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 20907,
+            "components": 619,
+            "largest_component": 6752,
+            "isolated_nodes": 586
+          },
+          "possible": {
+            "edges": 21582,
+            "components": 615,
+            "largest_component": 6755,
+            "isolated_nodes": 581
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 20581,
+            "components": 623,
+            "largest_component": 6749,
+            "isolated_nodes": 591
+          },
+          "possible": {
+            "edges": 21932,
+            "components": 612,
+            "largest_component": 6756,
+            "isolated_nodes": 576
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 19941,
+            "components": 630,
+            "largest_component": 6745,
+            "isolated_nodes": 598
+          },
+          "possible": {
+            "edges": 22622,
+            "components": 604,
+            "largest_component": 6761,
+            "isolated_nodes": 565
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2652,
+        "ambiguous_edges_between_guaranteed_components": 29,
+        "guaranteed_components": 630,
+        "possible_components": 604,
+        "component_mergers": 26
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p15_H_reference_seed_9210003",
+      "source_sha256": "4f276a1902fd98128fdc0ebcdae6aa88af2ce0712af43455bf65ad43af8f0f0b",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 749692,
+      "possible_edge_birth_events": 1352,
+      "guaranteed_edge_exit_events": 1262,
+      "critical_width_count": 2616,
+      "possible_component_merger_events": 20,
+      "guaranteed_component_split_events": 19,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 20480,
+            "components": 587,
+            "largest_component": 6665,
+            "isolated_nodes": 564
+          },
+          "possible": {
+            "edges": 20480,
+            "components": 587,
+            "largest_component": 6665,
+            "isolated_nodes": 564
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 20178,
+            "components": 594,
+            "largest_component": 6659,
+            "isolated_nodes": 572
+          },
+          "possible": {
+            "edges": 20811,
+            "components": 585,
+            "largest_component": 6666,
+            "isolated_nodes": 561
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 19854,
+            "components": 597,
+            "largest_component": 6658,
+            "isolated_nodes": 577
+          },
+          "possible": {
+            "edges": 21136,
+            "components": 581,
+            "largest_component": 6668,
+            "isolated_nodes": 555
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 19218,
+            "components": 606,
+            "largest_component": 6652,
+            "isolated_nodes": 588
+          },
+          "possible": {
+            "edges": 21832,
+            "components": 567,
+            "largest_component": 6831,
+            "isolated_nodes": 538
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2573,
+        "ambiguous_edges_between_guaranteed_components": 41,
+        "guaranteed_components": 606,
+        "possible_components": 567,
+        "component_mergers": 39
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p15_H_weak_seed_9210003",
+      "source_sha256": "0c50d0ea2e88b97f163dd9d109c9280093b1aef7ca1d41c0559c51ce3ddb1700",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 705092,
+      "possible_edge_birth_events": 1305,
+      "guaranteed_edge_exit_events": 1254,
+      "critical_width_count": 2561,
+      "possible_component_merger_events": 23,
+      "guaranteed_component_split_events": 30,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 17207,
+            "components": 869,
+            "largest_component": 6515,
+            "isolated_nodes": 827
+          },
+          "possible": {
+            "edges": 17207,
+            "components": 869,
+            "largest_component": 6515,
+            "isolated_nodes": 827
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 16892,
+            "components": 877,
+            "largest_component": 6507,
+            "isolated_nodes": 835
+          },
+          "possible": {
+            "edges": 17523,
+            "components": 863,
+            "largest_component": 6520,
+            "isolated_nodes": 820
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 16552,
+            "components": 885,
+            "largest_component": 6503,
+            "isolated_nodes": 847
+          },
+          "possible": {
+            "edges": 17832,
+            "components": 858,
+            "largest_component": 6523,
+            "isolated_nodes": 813
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 15953,
+            "components": 899,
+            "largest_component": 6494,
+            "isolated_nodes": 865
+          },
+          "possible": {
+            "edges": 18512,
+            "components": 846,
+            "largest_component": 6531,
+            "isolated_nodes": 798
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2492,
+        "ambiguous_edges_between_guaranteed_components": 67,
+        "guaranteed_components": 899,
+        "possible_components": 846,
+        "component_mergers": 53
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p3_H_reference_seed_9210001",
+      "source_sha256": "352d4257e741c5acb68b8375e6a88aaefc901351d23a4420d349b3b6d2fe3e45",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 844458,
+      "possible_edge_birth_events": 1481,
+      "guaranteed_edge_exit_events": 1374,
+      "critical_width_count": 2857,
+      "possible_component_merger_events": 11,
+      "guaranteed_component_split_events": 18,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 21923,
+            "components": 611,
+            "largest_component": 6488,
+            "isolated_nodes": 585
+          },
+          "possible": {
+            "edges": 21923,
+            "components": 611,
+            "largest_component": 6488,
+            "isolated_nodes": 585
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 21587,
+            "components": 616,
+            "largest_component": 6483,
+            "isolated_nodes": 590
+          },
+          "possible": {
+            "edges": 22284,
+            "components": 607,
+            "largest_component": 6491,
+            "isolated_nodes": 580
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 21256,
+            "components": 619,
+            "largest_component": 6481,
+            "isolated_nodes": 594
+          },
+          "possible": {
+            "edges": 22642,
+            "components": 606,
+            "largest_component": 6493,
+            "isolated_nodes": 580
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 20549,
+            "components": 629,
+            "largest_component": 6472,
+            "isolated_nodes": 605
+          },
+          "possible": {
+            "edges": 23404,
+            "components": 600,
+            "largest_component": 6496,
+            "isolated_nodes": 571
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2820,
+        "ambiguous_edges_between_guaranteed_components": 35,
+        "guaranteed_components": 629,
+        "possible_components": 600,
+        "component_mergers": 29
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p3_H_reference_seed_9210003",
+      "source_sha256": "ed8b08dd9e5f35773561ad8ff936b017b9254c06136bbfba1b7d6a2df80ef7d7",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 739543,
+      "possible_edge_birth_events": 1434,
+      "guaranteed_edge_exit_events": 1315,
+      "critical_width_count": 2751,
+      "possible_component_merger_events": 19,
+      "guaranteed_component_split_events": 14,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 20843,
+            "components": 575,
+            "largest_component": 6821,
+            "isolated_nodes": 544
+          },
+          "possible": {
+            "edges": 20843,
+            "components": 575,
+            "largest_component": 6821,
+            "isolated_nodes": 544
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 20510,
+            "components": 576,
+            "largest_component": 6821,
+            "isolated_nodes": 546
+          },
+          "possible": {
+            "edges": 21194,
+            "components": 572,
+            "largest_component": 6824,
+            "isolated_nodes": 541
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 20208,
+            "components": 581,
+            "largest_component": 6817,
+            "isolated_nodes": 552
+          },
+          "possible": {
+            "edges": 21550,
+            "components": 566,
+            "largest_component": 6828,
+            "isolated_nodes": 535
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 19528,
+            "components": 589,
+            "largest_component": 6810,
+            "isolated_nodes": 561
+          },
+          "possible": {
+            "edges": 22277,
+            "components": 556,
+            "largest_component": 6836,
+            "isolated_nodes": 524
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2714,
+        "ambiguous_edges_between_guaranteed_components": 35,
+        "guaranteed_components": 589,
+        "possible_components": 556,
+        "component_mergers": 33
+      }
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p3_H_weak_seed_9210003",
+      "source_sha256": "2c9f4538a0fc2e84dee34da915683c65a518c0c91355eb214b32877d3ad0c986",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "candidate_pairs": 702854,
+      "possible_edge_birth_events": 1350,
+      "guaranteed_edge_exit_events": 1282,
+      "critical_width_count": 2634,
+      "possible_component_merger_events": 25,
+      "guaranteed_component_split_events": 30,
+      "endpoints": [
+        {
+          "width": 0.0,
+          "guaranteed": {
+            "edges": 17541,
+            "components": 907,
+            "largest_component": 6474,
+            "isolated_nodes": 862
+          },
+          "possible": {
+            "edges": 17541,
+            "components": 907,
+            "largest_component": 6474,
+            "isolated_nodes": 862
+          }
+        },
+        {
+          "width": 0.025,
+          "guaranteed": {
+            "edges": 17234,
+            "components": 916,
+            "largest_component": 6465,
+            "isolated_nodes": 871
+          },
+          "possible": {
+            "edges": 17866,
+            "components": 904,
+            "largest_component": 6475,
+            "isolated_nodes": 857
+          }
+        },
+        {
+          "width": 0.05,
+          "guaranteed": {
+            "edges": 16924,
+            "components": 924,
+            "largest_component": 6457,
+            "isolated_nodes": 879
+          },
+          "possible": {
+            "edges": 18197,
+            "components": 896,
+            "largest_component": 6482,
+            "isolated_nodes": 848
+          }
+        },
+        {
+          "width": 0.1,
+          "guaranteed": {
+            "edges": 16259,
+            "components": 937,
+            "largest_component": 6447,
+            "isolated_nodes": 895
+          },
+          "possible": {
+            "edges": 18891,
+            "components": 882,
+            "largest_component": 6493,
+            "isolated_nodes": 832
+          }
+        }
+      ],
+      "quotient_at_0p1": {
+        "ambiguous_edges_inside_guaranteed_components": 2567,
+        "ambiguous_edges_between_guaranteed_components": 65,
+        "guaranteed_components": 937,
+        "possible_components": 882,
+        "component_mergers": 55
+      }
+    }
+  ]
+}

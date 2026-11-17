@@ -4,16 +4,25 @@
 from __future__ import annotations
 
 import hashlib
+import os
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 INCLUDED = [
+    "analysis/analyze_critical_widths.py",
+    "analysis/benchmark_pair_search.py",
+    "analysis/benchmark_width_sweep.py",
+    "analysis/plot_critical_width_audit.py",
+    "data/derived/critical_widths.json",
     "data/derived/interval_radius_case_study.json",
     "data/derived/interval_radius_frame_metrics.csv",
     "data/derived/interval_radius_trajectory_summary.csv",
+    "data/derived/pair_search_benchmark.json",
+    "data/derived/width_sweep_benchmark.json",
     "data/provenance/RUN_PROVENANCE.csv",
     "src/interval_radius_graph.py",
+    "src/critical_width_sweep.py",
 ]
 
 
@@ -32,8 +41,11 @@ def main() -> None:
         if not path.is_file():
             raise FileNotFoundError(path)
         lines.append(f"{sha256(path)}  {relative}")
-    with (ROOT / "MANIFEST.sha256").open("w", encoding="utf-8", newline="\n") as handle:
+    destination = ROOT / "MANIFEST.sha256"
+    temporary = ROOT / ".MANIFEST.sha256.tmp"
+    with temporary.open("w", encoding="utf-8", newline="\n") as handle:
         handle.write("\n".join(lines) + "\n")
+    os.replace(temporary, destination)
     print("WROTE MANIFEST.sha256")
 
 

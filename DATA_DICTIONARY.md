@@ -60,3 +60,36 @@ excluded sources, source SHA-256 values, and the names of the derived outputs.
 One row per included raw HDF5 file. It records the run identifier, original
 project-relative path, byte size, SHA-256 digest, completion flags, frame and
 particle counts, simulation time step, and final physical time.
+
+## `data/derived/critical_widths.json`
+
+One record per provenance-listed run, using its middle saved frame. The
+`source_sha256` identifies the raw HDF5 file; `candidate_pairs` is the safe
+tree-search output at maximum width 0.1 and surface gap 2 nm.
+`possible_edge_birth_events` and `guaranteed_edge_exit_events` count pairwise
+events inside the declared width interval. `critical_width_count` counts
+distinct numerical event widths plus both domain endpoints. These are edge
+events, not necessarily changes in connected components.
+`possible_component_merger_events` counts unions among possible-edge births;
+`guaranteed_component_split_events` counts reverse-sweep unions among
+guaranteed-edge exits. Both count merger operations, so simultaneous events
+at one width can contribute more than one count.
+
+`endpoints` reports exact graph summaries at each width in the file's `widths`
+array. The `quotient_at_0p1` fields count uncertain edges inside and between
+guaranteed components, guaranteed and possible component counts, and the
+number of component mergers. The 15 records are one frame per heterogeneous
+simulation run; they are not 15 exchangeable biological replicates.
+
+## `data/derived/width_sweep_benchmark.json`
+
+Six records: one middle saved frame for the first manifest run at each of
+three particle counts, each tested with 4 and 40 query widths. Both methods
+use one safe KD-tree candidate search and report the same endpoint edge count,
+component count, largest-component size, and isolated-node count at every
+queried width. `exact_summary_equality` records this check.
+`repeated_csr_seconds` and `width_sweep_seconds` contain five wall-clock
+repetitions each; their corresponding median fields are in seconds.
+`median_time_ratio_repeated_over_sweep` is the ratio of the two medians, with
+values above one favouring the event sweep. File read and hashing are excluded
+from timing. The comparison is workload- and implementation-specific.

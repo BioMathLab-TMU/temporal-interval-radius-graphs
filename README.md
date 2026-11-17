@@ -26,6 +26,11 @@ zero-dimensional persistence deaths with Kruskal's algorithm.
 | `src/interval_radius_graph.py` | Maintained implementation of the mathematical method |
 | `tests/` | Unit tests and validation tests for the published derived results |
 | `analysis/run_interval_radius_case_study.py` | Standalone HDF5 analysis and local figure-generation workflow |
+| `analysis/benchmark_pair_search.py` | Exact spatial-search benchmark against blocked all-pairs enumeration |
+| `src/critical_width_sweep.py` | Exact pairwise width events, endpoint component sweeps, and ambiguity quotient |
+| `analysis/analyze_critical_widths.py` | Hash-checked structural audit of 15 saved frames |
+| `analysis/plot_critical_width_audit.py` | Rebuild the private manuscript's structural audit figure from derived JSON |
+| `analysis/benchmark_width_sweep.py` | Compare width-event union-find with repeated sparse endpoint summaries |
 | `data/derived/` | Frame-level metrics, trajectory summaries, and analysis metadata |
 | `data/provenance/` | File-level run provenance and SHA-256 identifiers for the raw trajectories |
 | `data/raw/README.md` | Raw-data scope and archival policy |
@@ -105,7 +110,71 @@ The repository distinguishes two committed data layers:
 Generated figures are written only to the ignored local output directory; they
 are not committed to this repository.
 
+## Critical radius widths and structural ambiguity
+
+The symmetric one-parameter interval family can be evaluated at any declared
+width in `[0, 0.1]`. The sweep computes the pairwise widths at which possible
+edges enter or guaranteed edges leave and uses union-find for component
+summaries. At a threshold of 2 nm, the separate structural audit analyses
+the middle saved frame of each of the 15 provenance-listed runs. It checks
+the source hashes and agrees with independent endpoint constructions at
+widths `0`, `0.025`, `0.05`, and `0.1` for edge count, component count,
+largest-component size, and isolated-node count. It does not interpret
+frames as independent biological replicates.
+
+To reproduce this audit from the raw HDF5 archive:
+
+```bash
+python analysis/analyze_critical_widths.py \
+  --input-root /path/to/raw/article-runs --all-runs \
+  --output data/derived/critical_widths.json
+```
+
+The quotient count contracts each guaranteed component and counts uncertain
+edges between contracted vertices. Its possible-component partition is
+checked against the direct possible graph. Exact event ratios are defined
+mathematically; floating-point representations at an event itself can differ
+in the last bit, so the validation checks report widths separately from
+critical-ratio equality tests.
+The figure used in the manuscript can be regenerated locally with
+`python analysis/plot_critical_width_audit.py --output /path/to/Fig2.png`.
+The image itself is excluded from this code repository.
+
+The width-sweep benchmark is reproduced with:
+
+```bash
+python analysis/benchmark_width_sweep.py \
+  --input-root /path/to/raw/article-runs \
+  --output data/derived/width_sweep_benchmark.json --repeats 5
+```
+
+It checks equality of four endpoint observables for 4 and 40 widths on three
+hash-checked middle frames. On the recorded Windows run, the event sweep was
+slower for 4 widths but 4.43-4.58 times faster for 40 widths. These timings
+are conditional on the chosen implementation, hardware, and data; the
+benchmark does not claim a universal speedup.
+
 See `REPRODUCIBILITY.md` and `DATA_DICTIONARY.md` for the full contract.
+
+## Reproduce the pair-search benchmark
+
+With the raw trajectories placed under the path layout described above, run:
+
+```bash
+python analysis/benchmark_pair_search.py \
+  --input-root /path/to/raw/article-runs \
+  --output data/derived/pair_search_benchmark.json \
+  --repeats 5 --max-reference-nodes 15000
+```
+
+The benchmark selects the middle saved frame from the first provenance-listed
+trajectory at each recorded node count. It checks raw SHA-256 identifiers,
+times exact tree-based pair generation and endpoint classification, and
+compares the endpoint edge sets with a blocked all-pairs reference at all
+three archived sizes. Timings
+exclude HDF5 loading, source hashing, and component calculations. The JSON
+records individual repeats and software versions; timings depend on hardware
+and workload.
 
 ## Citation
 

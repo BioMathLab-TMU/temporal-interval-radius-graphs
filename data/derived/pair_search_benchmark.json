@@ -1,0 +1,101 @@
+{
+  "schema": "interval-radius-pair-benchmark-1",
+  "benchmark_scope": "pair generation and endpoint classification only; no component analysis",
+  "reference_scope": "blocked all-pairs exact enumeration",
+  "frame_selection": "middle saved frame of the first manifest run at each node count",
+  "relative_half_width": 0.1,
+  "surface_gap_threshold_nm": 2.0,
+  "repeats": 5,
+  "max_reference_nodes": 15000,
+  "python_version": "3.12.14",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "numpy_version": "2.5.3",
+  "scipy_version": "1.18.1",
+  "records": [
+    {
+      "run_id": "article_s1_p1_finite_high_attraction_V_0p05_seed_9210001",
+      "source_sha256": "4417b3a6e109fb6da41d0a5f339e15dad1b77e252ee9ef51d632d474a547a680",
+      "frame": "step_20200",
+      "n_nodes": 3713,
+      "all_pair_count": 6891328,
+      "tree_candidate_count": 548327,
+      "guaranteed_edge_count": 11206,
+      "possible_edge_count": 12823,
+      "tree_pair_classification_seconds_median": 0.08702239999547601,
+      "tree_pair_classification_seconds_repeats": [
+        0.08150030008982867,
+        0.08724300004541874,
+        0.08702239999547601,
+        0.08933630003593862,
+        0.08046070009004325
+      ],
+      "reference_seconds_median": 0.5546680999686942,
+      "reference_seconds_repeats": [
+        0.48764639999717474,
+        0.5546680999686942,
+        0.528702300041914,
+        0.7035839000018314,
+        0.7076403999235481
+      ],
+      "reference_equal": true,
+      "reference_repeats": 5
+    },
+    {
+      "run_id": "article_s1_p1_main_I_0p075_H_reference_seed_9210001",
+      "source_sha256": "4c90e6d2baa1d3756b78246bb3d9b746810fe7e0061d97bf85d9b8b55c48b9f2",
+      "frame": "step_20200",
+      "n_nodes": 7427,
+      "all_pair_count": 27576451,
+      "tree_candidate_count": 836965,
+      "guaranteed_edge_count": 19581,
+      "possible_edge_count": 22284,
+      "tree_pair_classification_seconds_median": 0.15070540003944188,
+      "tree_pair_classification_seconds_repeats": [
+        0.14904789999127388,
+        0.15070540003944188,
+        0.15234359994065017,
+        0.14812480006366968,
+        0.15838089992757887
+      ],
+      "reference_seconds_median": 2.263649799977429,
+      "reference_seconds_repeats": [
+        2.264006800018251,
+        2.2308335999259725,
+        2.2529221000149846,
+        2.263649799977429,
+        2.2661245999624953
+      ],
+      "reference_equal": true,
+      "reference_repeats": 5
+    },
+    {
+      "run_id": "article_s1_p1_finite_high_attraction_V_0p2_seed_9210001",
+      "source_sha256": "cfde6559c81df45946fd6af94fc9b1d0a0488cfa5017aa458df3ad5c0402c1f9",
+      "frame": "step_20200",
+      "n_nodes": 14853,
+      "all_pair_count": 110298378,
+      "tree_candidate_count": 1520726,
+      "guaranteed_edge_count": 37053,
+      "possible_edge_count": 42141,
+      "tree_pair_classification_seconds_median": 0.2860712999245152,
+      "tree_pair_classification_seconds_repeats": [
+        0.2836325999815017,
+        0.2860712999245152,
+        0.2983259999891743,
+        0.28131820005364716,
+        0.2909096000948921
+      ],
+      "reference_seconds_median": 7.7746557999635115,
+      "reference_seconds_repeats": [
+        7.7746557999635115,
+        7.780566800036468,
+        7.792526799952611,
+        7.619447599980049,
+        7.6250524999341
+      ],
+      "reference_equal": true,
+      "reference_repeats": 5
+    }
+  ]
+}

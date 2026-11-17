@@ -28,5 +28,5 @@ analysis = [
 Repository = "https://github.com/BioMathLab-TMU/temporal-interval-radius-graphs"
 
 [tool.setuptools]
-py-modules = ["interval_radius_graph"]
+py-modules = ["interval_radius_graph", "critical_width_sweep"]
 package-dir = {"" = "src"}
