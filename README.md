@@ -258,3 +258,10 @@ law for graph observables or a calibrated biological model.
 uncertainty for that comparison using joint resampling across correlation
 levels. Its conditional results are in
 `data/derived/correlated_radius_mc_bootstrap.json`.
+The two endpoint edge-count laws also have non-Monte-Carlo moment calculations
+in `analysis/exact_endpoint_edge_moments.py`. The independent-law calculation
+integrates conditional edge probabilities over one varied node; the
+shared-law calculation sweeps edge thresholds of one common uniform factor.
+`analysis/evaluate_exact_variance_interpolation.py` tests the intermediate
+variance approximation against these computed endpoints, retaining the
+case-level results in `data/derived/exact_variance_interpolation_test.json`.

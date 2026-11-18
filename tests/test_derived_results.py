@@ -213,6 +213,32 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
                     self.assertLessEqual(row["mc_bootstrap_q025"], row["mc_bootstrap_q975"])
                     self.assertGreaterEqual(row["observed_ratio"], 0.0)
 
+    def test_exact_edge_moments_and_no_fit_test(self) -> None:
+        for width_tag, width in (("0p10", 0.10), ("0p05", 0.05)):
+            moments = json.loads((RESULTS / f"exact_endpoint_edge_moments_{width_tag}.json").read_text(encoding="utf-8"))
+            self.assertEqual(moments["schema"], "exact-endpoint-edge-moments-1")
+            self.assertEqual(moments["width"], width)
+            self.assertTrue(moments["source_hashes_checked"])
+            self.assertEqual(len(moments["archive"]), 15)
+            self.assertEqual(len(moments["synthetic"]), 9)
+            for case in moments["archive"] + moments["synthetic"]:
+                self.assertGreaterEqual(case["uncertain_edges"], 0)
+                for law in ("independent_uniform", "common_uniform"):
+                    self.assertGreaterEqual(case[law]["variance_edges"], 0.0)
+                    self.assertAlmostEqual(case[law]["sd_edges"] ** 2,
+                                           case[law]["variance_edges"], places=7)
+        evaluation = json.loads((RESULTS / "exact_variance_interpolation_test.json").read_text(encoding="utf-8"))
+        self.assertEqual(evaluation["schema"], "exact-endpoint-variance-interpolation-test-1")
+        self.assertEqual({entry["width"] for entry in evaluation["reports"]}, {0.05, 0.10})
+        for entry in evaluation["reports"]:
+            self.assertEqual(len(entry["groups"]["archive"]), 15)
+            self.assertEqual(len(entry["groups"]["synthetic"]), 9)
+            for cases in entry["groups"].values():
+                for case in cases:
+                    for row in case["rows"]:
+                        self.assertGreater(row["predicted_sd_from_exact_endpoints"], 0.0)
+                        self.assertLessEqual(row["mc_bootstrap_q025"], row["mc_bootstrap_q975"])
+
 
 if __name__ == "__main__":
     unittest.main()

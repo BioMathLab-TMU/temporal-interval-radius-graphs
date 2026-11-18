@@ -143,6 +143,25 @@ they are not confidence intervals over trajectories, biological systems, or
 synthetic point processes. Shared resampling indices across correlations
 preserve the experiment's common-random-number comparison.
 
+## Exact endpoint edge-count moments and no-fit interpolation
+
+`exact_endpoint_edge_moments_0p10.json` and
+`exact_endpoint_edge_moments_0p05.json` contain first and second moments of
+edge count conditional on each of the same 15 archived frames and nine
+synthetic finite disk graphs. The independent-uniform variance uses exact
+one-dimensional integrals for pairs of uncertain edges sharing a varied node;
+disjoint edges have zero covariance. The common-uniform moments use a sorted
+threshold sweep of the single uniform factor. `variance_edges` and
+`sd_edges` are mathematically exact for the specified laws up to floating
+point rounding; they are not Monte Carlo estimates.
+
+`exact_variance_interpolation_test.json` compares intermediate-correlation
+sample SD with `sqrt((1-rho)*Var_independent + rho*Var_common)`, using the
+computed endpoint variances above. Its bootstrap percentiles measure only
+finite Monte Carlo uncertainty in the intermediate samples conditional on
+each fixed geometry. The interpolation is a tested hypothesis, not an exact
+formula for edge count.
+
 ## `data/derived/bbbc039_radius_graph.json`
 
 Independent external application to the public BBBC039v1 nuclei-mask
