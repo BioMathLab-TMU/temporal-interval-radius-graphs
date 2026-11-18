@@ -162,6 +162,19 @@ finite Monte Carlo uncertainty in the intermediate samples conditional on
 each fixed geometry. The interpolation is a tested hypothesis, not an exact
 formula for edge count.
 
+## `data/derived/finite_size_transition_holdout.json`
+
+Fresh synthetic disk-graph holdout at four target point counts and ten new
+point-process seeds per size. Three surface-gap thresholds were fixed from
+the earlier pilot rather than selected on each holdout realization. Box side
+scales with square root of target count to maintain nominal point density.
+Each of the 120 cases contains nominal largest-component fraction, 512-draw
+summaries at eight cross-node correlations, seeds, geometric settings, and
+exact endpoint edge-count moments. Raw draw arrays are omitted because the
+synthetic cases are deterministically regenerated from recorded seeds and
+settings. The results describe finite-size behavior; no infinite-volume
+percolation threshold is estimated.
+
 ## `data/derived/bbbc039_radius_graph.json`
 
 Independent external application to the public BBBC039v1 nuclei-mask

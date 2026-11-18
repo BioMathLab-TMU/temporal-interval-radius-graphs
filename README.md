@@ -265,3 +265,9 @@ shared-law calculation sweeps edge thresholds of one common uniform factor.
 `analysis/evaluate_exact_variance_interpolation.py` tests the intermediate
 variance approximation against these computed endpoints, retaining the
 case-level results in `data/derived/exact_variance_interpolation_test.json`.
+`analysis/finite_size_transition_study.py` is a separate holdout with four
+target point counts, ten fresh point-process seeds per size, and three
+thresholds fixed from the pilot. Its case-level summaries and exact edge
+moments are retained in `data/derived/finite_size_transition_holdout.json`.
+The result supports a finite-size component-sensitivity hypothesis; it is
+not a calibrated biological model or an infinite-volume percolation result.

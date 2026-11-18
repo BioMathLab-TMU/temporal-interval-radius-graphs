@@ -239,6 +239,22 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
                         self.assertGreater(row["predicted_sd_from_exact_endpoints"], 0.0)
                         self.assertLessEqual(row["mc_bootstrap_q025"], row["mc_bootstrap_q975"])
 
+    def test_finite_size_holdout_design_contract(self) -> None:
+        report = json.loads((RESULTS / "finite_size_transition_holdout.json").read_text(encoding="utf-8"))
+        self.assertEqual(report["schema"], "finite-size-correlation-holdout-1")
+        self.assertEqual(report["target_counts"], [325, 650, 1300, 2600])
+        self.assertEqual(report["thresholds_from_pilot"], {"sparse": 0.4, "transition": 0.8, "dense": 1.2})
+        self.assertEqual(len(report["holdout_seeds"]), 10)
+        self.assertTrue(set(report["holdout_seeds"]).isdisjoint(report["pilot_seeds_not_reused"]))
+        self.assertEqual(len(report["records"]), 120)
+        keys = {(r["target_n"], r["point_seed"], r["stage"]) for r in report["records"]}
+        self.assertEqual(len(keys), 120)
+        for record in report["records"]:
+            self.assertEqual(record["threshold"], report["thresholds_from_pilot"][record["stage"]])
+            self.assertEqual(record["sampled"]["draws"], 512)
+            self.assertGreaterEqual(record["exact_edge_moments"]["independent_uniform"]["variance_edges"], 0.0)
+            self.assertGreaterEqual(record["exact_edge_moments"]["common_uniform"]["variance_edges"], 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()
