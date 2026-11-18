@@ -27,7 +27,7 @@ def main() -> None:
     if report["schema"] != "correlated-radius-continuum-1":
         raise ValueError("unexpected source schema")
     rho = np.asarray(report["rho_grid"])
-    fig, axes = plt.subplots(1, 3, figsize=(14, 4.1), constrained_layout=True)
+    fig, axes = plt.subplots(1, 4, figsize=(17.5, 4.1), constrained_layout=True)
     colors = {"archive": "#24476b", "synthetic": "#bd6b32"}
     for group in ("archive", "synthetic"):
         records = report[group]
@@ -39,14 +39,19 @@ def main() -> None:
         axes[1].fill_between(rho, e[:, 0], e[:, 2], alpha=0.16, color=colors[group])
     for stage, color in (("sparse", "#3d8c70"), ("transition", "#9a4d86"), ("dense", "#bd6b32")):
         records = [r for r in report["synthetic"] if r["finite_size_stage"] == stage]
+        s = np.asarray([quantile_band(records, x, "largest_component_fraction", "sd") for x in rho])
+        axes[2].plot(rho, s[:, 1], marker="o", label=stage, color=color)
+        axes[2].fill_between(rho, s[:, 0], s[:, 2], alpha=0.16, color=color)
         q = np.asarray([quantile_band(records, x, "largest_component_fraction", "observed_over_linearized_prediction") for x in rho])
-        axes[2].plot(rho, q[:, 1], marker="o", label=stage, color=color)
-        axes[2].fill_between(rho, q[:, 0], q[:, 2], alpha=0.16, color=color)
+        axes[3].plot(rho, q[:, 1], marker="o", label=stage, color=color)
+        axes[3].fill_between(rho, q[:, 0], q[:, 2], alpha=0.16, color=color)
     axes[0].set_title("A  Edge-count dispersion")
     axes[0].set_ylabel("SD / exact endpoint span")
     axes[1].set_title("B  Edge-count variance law")
-    axes[2].set_title("C  Largest component, synthetic")
-    for ax in axes[1:]:
+    axes[2].set_title("C  Component sensitivity")
+    axes[2].set_ylabel("Largest-component SD")
+    axes[3].set_title("D  Component variance law")
+    for ax in (axes[1], axes[3]):
         ax.axhline(1.0, color="0.35", ls="--", lw=1)
         ax.set_ylabel("Observed SD / interpolated SD")
     for ax in axes:
