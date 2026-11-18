@@ -19,11 +19,11 @@ INK = "#151A2D"
 
 def plot(source: Path, output: Path) -> None:
     report = json.loads(source.read_text(encoding="utf-8"))
-    if report["schema"] != "radius-baselines-2" or len(report["records"]) != 15:
+    if report["schema"] != "radius-baselines-3" or len(report["records"]) != 15:
         raise ValueError("expected the 15-frame sampling-law comparison")
     counts = [64, 1024]
-    fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.2), constrained_layout=True)
-    for ax, measure in zip(axes, ("edge", "lcc")):
+    fig, axes = plt.subplots(1, 3, figsize=(10.2, 3.2), constrained_layout=True)
+    for ax, measure in zip(axes[:2], ("edge", "lcc")):
         for law, color, label in (("independent_uniform", BLUE, "Independent node radii"),
                                   ("common_uniform", ORANGE, "Common scale factor")):
             arrays = []
@@ -58,6 +58,34 @@ def plot(source: Path, output: Path) -> None:
     axes[0].set_title("a  Edge count", loc="left", color=INK, fontsize=9, fontweight="bold")
     axes[1].set_title("b  Largest-component fraction", loc="left", color=INK, fontsize=9, fontweight="bold")
     axes[1].legend(frameon=False, fontsize=7.5, loc="lower right")
+    sizes = sorted({row["n_varied_nodes"] for row in report["records"]})
+    group_medians = []
+    for size in sizes:
+        values = np.asarray([
+            row["sampling"]["independent_uniform"]["summaries"]["1024"]["edge_sd"]
+            / (row["possible_edges"] - row["guaranteed_edges"])
+            for row in report["records"] if row["n_varied_nodes"] == size
+        ])
+        median = float(np.median(values))
+        group_medians.append(median)
+        axes[2].errorbar(size, median,
+                         yerr=[[median - np.percentile(values, 25)],
+                               [np.percentile(values, 75) - median]],
+                         color=BLUE, marker="o", markersize=4, capsize=3)
+    predicted = group_medians[0] * np.sqrt(sizes[0] / np.asarray(sizes))
+    axes[2].plot(sizes, predicted, linestyle="--", color=ORANGE,
+                 linewidth=1.2, label=r"$N_{\rm var}^{-1/2}$ reference")
+    axes[2].set_title("c  Independent-law scaling", loc="left", color=INK,
+                      fontsize=9, fontweight="bold")
+    axes[2].set_xticks(sizes, [f"{size:,}\n({sum(row['n_varied_nodes'] == size for row in report['records'])} runs)"
+                                  for size in sizes])
+    axes[2].set_ylabel("Edge SD / exact edge-count span")
+    axes[2].set_xlabel("Varying nodes per frame")
+    axes[2].set_ylim(0, 0.013)
+    axes[2].grid(axis="y", color="#DDE1EA", linewidth=0.55)
+    axes[2].spines[["top", "right"]].set_visible(False)
+    axes[2].tick_params(colors=INK, labelsize=8)
+    axes[2].legend(frameon=False, fontsize=7, loc="upper right")
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=300, facecolor="white", bbox_inches="tight")
     plt.close(fig)

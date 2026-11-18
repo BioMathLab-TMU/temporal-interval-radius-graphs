@@ -98,12 +98,14 @@ from timing. The comparison is workload- and implementation-specific.
 
 One middle frame per hash-verified HDF5 run, using a 0.10 radius half-width
 for type-1 nodes and a 2 nm surface-gap threshold. Schema
-`radius-baselines-2` records exact endpoint edge counts and largest-component
+`radius-baselines-3` records exact endpoint edge counts and largest-component
 fractions. `sampling.independent_uniform` gives independent uniform radii for
 each varying node; `sampling.common_uniform` uses one shared uniform factor
 for all varying radii in a graph. Each law has a reproducible seed and nested
 64- and 1024-draw summaries of sampled edge-count and largest-component
-spans, endpoint hits, and component-count ranges. The span fraction divides
+spans, sample standard deviations, 5th/95th percentiles, endpoint hits,
+and component-count ranges. `n_varied_nodes` counts the varying radii in
+each frame. The span fraction divides
 the sampled range by the exact endpoint range; it is null when the exact
 range is zero. `type_pair_cutoffs` records the nominal-gap shift coefficient
 for each type pair and whether it is constant; the equality flags check both
@@ -111,6 +113,26 @@ endpoint edge sets. `scalar_edge_disagreement` is the symmetric difference
 between the single edge-count-matched cutoff and the possible pair set.
 Neither law is inferred from biological data. No Monte Carlo value is used
 as a substitute for the deterministic endpoint certificate.
+
+## `data/derived/correlated_radius_continuum.json`
+
+Exploratory within-frame dependence experiment. Schema
+`correlated-radius-continuum-1` stores 15 hash-verified archived middle frames
+and nine synthetic finite disk-graph cases. Each record has 1,024 draw-level
+edge counts and largest-component fractions at eight target pairwise Pearson
+correlations of uniform radius factors. `rho_results` stores sample SD,
+quantiles, exact endpoint span, and two SD predictions. The
+`linearized_sd_prediction` interpolates the empirically observed endpoint
+variances; `naive_n_var_sd_prediction` uses the raw varying-node count.
+`degree_effective_count` is an ambiguous-edge-incidence proxy, not a fitted
+derivative count. `mcdiarmid_sum_squares` is the sum of squared ambiguous
+incidences over varying nodes and supports an independent-radius edge-count
+bounded-differences bound. The supplied correlation law is a Gaussian copula
+with uniform marginals; it is not calibrated to observed protein sizes.
+`correlated_radius_continuum_width_0p05.json` repeats the same design at a
+5% radius half-width with 512 draws per case and correlation. Its schema and
+field meanings are identical; the top-level `width` and per-record `draws`
+state the changed settings.
 
 ## `data/derived/bbbc039_radius_graph.json`
 

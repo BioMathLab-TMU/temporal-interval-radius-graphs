@@ -7,6 +7,7 @@ name = "temporal-interval-radius-graphs"
 version = "0.1.0"
 description = "Connectivity bounds for proximity graphs with interval-valued node radii"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.10"
 authors = [
   {name = "Shokoofeh Akbari", email = "shokoofe.akbari1997@gmail.com"},

@@ -133,7 +133,7 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
 
     def test_radius_baselines_respect_exact_envelopes(self) -> None:
         report = json.loads((RESULTS / "radius_baseline_comparison.json").read_text(encoding="utf-8"))
-        self.assertEqual(report["schema"], "radius-baselines-2")
+        self.assertEqual(report["schema"], "radius-baselines-3")
         self.assertTrue(report["source_hashes_checked"])
         records = report["records"]
         self.assertEqual(len(records), 15)
@@ -141,6 +141,7 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
         self.assertTrue(any(row["scalar_edge_disagreement"] > 0 for row in records))
         for row in records:
             self.assertEqual(row["draws"], 1024)
+            self.assertGreater(row["n_varied_nodes"], 0)
             self.assertTrue(row["type_pair_q_constant"])
             self.assertTrue(row["type_pair_possible_edges_equal"])
             self.assertTrue(row["type_pair_guaranteed_edges_equal"])
@@ -151,6 +152,9 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
                 self.assertTrue(row["guaranteed_lcc"] <= long["lcc_min"] <= long["lcc_max"] <= row["possible_lcc"])
                 self.assertLessEqual(short["edge_max"] - short["edge_min"], long["edge_max"] - long["edge_min"])
                 self.assertLessEqual(short["lcc_span"], long["lcc_span"])
+                self.assertLessEqual(long["edge_q05"], long["edge_q95"])
+                self.assertLessEqual(long["lcc_q05"], long["lcc_q95"])
+                self.assertGreaterEqual(long["edge_sd"], 0)
             self.assertEqual(row["scalar_edges"], row["possible_edges"])
 
     def test_independent_mask_case_study_contract(self) -> None:
@@ -164,6 +168,38 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
                 self.assertLessEqual(item["guaranteed_edges"], item["possible_edges"])
                 self.assertGreaterEqual(item["guaranteed_components"], item["possible_components"])
                 self.assertLessEqual(item["guaranteed_lcc"], item["possible_lcc"])
+
+    def test_correlation_continuum_is_bounded_and_source_checked(self) -> None:
+        report = json.loads((RESULTS / "correlated_radius_continuum.json").read_text(encoding="utf-8"))
+        self.assertEqual(report["schema"], "correlated-radius-continuum-1")
+        self.assertTrue(report["source_hashes_checked"])
+        self.assertEqual(len(report["archive"]), 15)
+        self.assertEqual(len(report["synthetic"]), 9)
+        self.assertEqual(report["rho_grid"], [0.0, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 1.0])
+        for record in report["archive"] + report["synthetic"]:
+            self.assertGreater(record["n_varied_nodes"], 0)
+            self.assertLessEqual(record["degree_effective_count"], record["n_varied_nodes"] + 1e-9)
+            for rho in report["rho_grid"]:
+                entry = record["rho_results"][str(rho)]
+                edges = np.asarray(entry["edge_count_draws"])
+                lcc = np.asarray(entry["largest_component_fraction_draws"])
+                self.assertEqual(len(edges), 1024)
+                self.assertTrue(np.all((record["guaranteed_edges"] <= edges) & (edges <= record["possible_edges"])))
+                self.assertTrue(np.all((record["guaranteed_lcc"] - 1e-14 <= lcc) & (lcc <= record["possible_lcc"] + 1e-14)))
+
+    def test_second_radius_width_check(self) -> None:
+        report = json.loads((RESULTS / "correlated_radius_continuum_width_0p05.json").read_text(encoding="utf-8"))
+        self.assertEqual(report["schema"], "correlated-radius-continuum-1")
+        self.assertEqual(report["width"], 0.05)
+        self.assertEqual(len(report["archive"]), 15)
+        self.assertEqual(len(report["synthetic"]), 9)
+        self.assertTrue(report["source_hashes_checked"])
+        for record in report["archive"] + report["synthetic"]:
+            self.assertEqual(record["draws"], 512)
+            for entry in record["rho_results"].values():
+                self.assertEqual(len(entry["edge_count_draws"]), 512)
+                self.assertTrue(np.all(np.asarray(entry["edge_count_draws"]) >= record["guaranteed_edges"]))
+                self.assertTrue(np.all(np.asarray(entry["edge_count_draws"]) <= record["possible_edges"]))
 
 
 if __name__ == "__main__":

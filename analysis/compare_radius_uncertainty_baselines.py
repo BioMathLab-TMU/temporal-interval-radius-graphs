@@ -47,10 +47,18 @@ def _quotient_summary(component_labels, component_sizes, cross_pairs, active, n_
 
 def _sampling_summary(lcc, components, edges, exact_span, lower_lcc, upper_lcc):
     span = max(lcc) - min(lcc)
+    edge_values = np.asarray(edges, dtype=np.float64)
+    lcc_values = np.asarray(lcc, dtype=np.float64)
     return {
         "edge_min": min(edges), "edge_max": max(edges),
+        "edge_sd": float(np.std(edge_values, ddof=1)),
+        "edge_q05": float(np.quantile(edge_values, 0.05)),
+        "edge_q95": float(np.quantile(edge_values, 0.95)),
         "lcc_min": min(lcc), "lcc_max": max(lcc),
         "lcc_mean": float(np.mean(lcc)), "lcc_span": span,
+        "lcc_sd": float(np.std(lcc_values, ddof=1)),
+        "lcc_q05": float(np.quantile(lcc_values, 0.05)),
+        "lcc_q95": float(np.quantile(lcc_values, 0.95)),
         "lcc_span_fraction_of_exact": span / exact_span if exact_span > 0 else None,
         "lower_lcc_attained": bool(np.isclose(min(lcc), lower_lcc, rtol=0, atol=1e-14)),
         "upper_lcc_attained": bool(np.isclose(max(lcc), upper_lcc, rtol=0, atol=1e-14)),
@@ -151,7 +159,8 @@ def compare_frame(positions, radii, types, *, seed: int, draws: int = 1024,
                                                                exact_span, lower_lcc, upper_lcc)
         sampling[law] = {"seed": law_seed, "summaries": summaries}
     return {
-        "n_nodes": len(radii), "width": width, "threshold_nm": threshold,
+        "n_nodes": len(radii), "n_varied_nodes": int(np.count_nonzero(varied)),
+        "width": width, "threshold_nm": threshold,
         "draws": draws, "seed": seed,
         "guaranteed_edges": len(graph.guaranteed_pairs),
         "possible_edges": possible_count,
@@ -186,7 +195,7 @@ def analyze(input_root: Path, draws: int = 1024) -> dict:
         record.update(run_id=row["run_id"], source_sha256=row["sha256"], frame=frame)
         records.append(record)
         print(f"BASELINE_OK {run_index+1}/{len(rows)} {row['run_id']}", flush=True)
-    return {"schema": "radius-baselines-2", "radius_sampling_laws": [
+    return {"schema": "radius-baselines-3", "radius_sampling_laws": [
                 "independent uniform per varied node",
                 "one common uniform scale for all varied nodes"],
             "sampling_prefixes": [64, draws],

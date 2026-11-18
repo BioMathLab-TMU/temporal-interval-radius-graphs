@@ -226,8 +226,31 @@ and versioned software DOI may be added when those identifiers exist.
 This work is based upon research funded by Iran National Science Foundation
 (INSF) under project No. 4029556.
 
-## License status
+## License
 
-No reuse license is currently asserted. Please contact the authors before
-reusing code or data. The authors will select an explicit code and data license
-after confirming institutional and funder requirements.
+Code is released under the [MIT license](LICENSE). Author-created derived
+CSV/JSON data in `data/derived/` are released under
+[CC BY 4.0](LICENSE-DATA.md). These licenses do not cover excluded raw HDF5
+trajectories, third-party microscopy archives, or unpublished manuscript and
+figure files.
+
+## Exploratory cross-node radius correlation
+
+`analysis/correlated_radius_continuum.py` tests eight within-frame correlation
+levels while preserving uniform marginal radius factors and every declared
+radius interval. It uses 15 hash-verified simulation frames and nine synthetic
+finite disk-graph cases. All 1,024 draw-level edge counts and largest-component
+fractions per case and correlation are retained in
+`data/derived/correlated_radius_continuum.json`; the implementation and
+scientific limitations are described in the workspace research report.
+The independent 5%-width check with 512 draws is retained in
+`data/derived/correlated_radius_continuum_width_0p05.json`.
+
+```bash
+python analysis/correlated_radius_continuum.py \
+  --input-root /path/to/raw/article-runs --draws 1024 \
+  --output data/derived/correlated_radius_continuum.json
+```
+
+The tested variance interpolation is an exploratory hypothesis, not a proved
+law for graph observables or a calibrated biological model.
