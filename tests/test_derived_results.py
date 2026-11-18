@@ -133,16 +133,24 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
 
     def test_radius_baselines_respect_exact_envelopes(self) -> None:
         report = json.loads((RESULTS / "radius_baseline_comparison.json").read_text(encoding="utf-8"))
-        self.assertEqual(report["schema"], "radius-baselines-1")
+        self.assertEqual(report["schema"], "radius-baselines-2")
         self.assertTrue(report["source_hashes_checked"])
         records = report["records"]
         self.assertEqual(len(records), 15)
         self.assertEqual(len({record["run_id"] for record in records}), 15)
         self.assertTrue(any(row["scalar_edge_disagreement"] > 0 for row in records))
         for row in records:
-            self.assertEqual(row["draws"], 64)
-            self.assertTrue(row["guaranteed_edges"] <= row["sample_edge_min"] <= row["sample_edge_max"] <= row["possible_edges"])
-            self.assertTrue(row["guaranteed_lcc"] <= row["sample_lcc_min"] <= row["sample_lcc_max"] <= row["possible_lcc"])
+            self.assertEqual(row["draws"], 1024)
+            self.assertTrue(row["type_pair_q_constant"])
+            self.assertTrue(row["type_pair_possible_edges_equal"])
+            self.assertTrue(row["type_pair_guaranteed_edges_equal"])
+            for law in ("independent_uniform", "common_uniform"):
+                short = row["sampling"][law]["summaries"]["64"]
+                long = row["sampling"][law]["summaries"]["1024"]
+                self.assertTrue(row["guaranteed_edges"] <= long["edge_min"] <= long["edge_max"] <= row["possible_edges"])
+                self.assertTrue(row["guaranteed_lcc"] <= long["lcc_min"] <= long["lcc_max"] <= row["possible_lcc"])
+                self.assertLessEqual(short["edge_max"] - short["edge_min"], long["edge_max"] - long["edge_min"])
+                self.assertLessEqual(short["lcc_span"], long["lcc_span"])
             self.assertEqual(row["scalar_edges"], row["possible_edges"])
 
     def test_independent_mask_case_study_contract(self) -> None:

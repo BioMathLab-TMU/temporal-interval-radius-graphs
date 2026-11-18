@@ -156,19 +156,28 @@ benchmark does not claim a universal speedup.
 
 See `REPRODUCIBILITY.md` and `DATA_DICTIONARY.md` for the full contract.
 
-## Compare with radius sampling and a common cutoff
+## Compare radius-sampling laws and cutoff representations
 
 ```bash
 python analysis/compare_radius_uncertainty_baselines.py \
-  --input-root /path/to/raw/article-runs --draws 64 \
+  --input-root /path/to/raw/article-runs --draws 1024 \
   --output data/derived/radius_baseline_comparison.json
 ```
 
-The script checks all 15 raw HDF5 hashes, draws independent uniform radii
-within the declared intervals, and verifies every sampled edge set lies
-between the exact endpoint edge sets. It also chooses one scalar cutoff per
-frame to match the possible-edge count and reports the symmetric difference
-of edge identities. Neither comparator estimates a biological radius law.
+The script checks all 15 raw HDF5 hashes. For each frame it compares nested
+64- and 1024-draw prefixes under independent uniform radii and one common
+uniform scale factor for all varying nodes. It checks that sampled component
+observables lie within their exact endpoint bounds. It also verifies whether
+pair-type-specific nominal-gap cutoffs reproduce both endpoint edge sets,
+while retaining the single scalar cutoff as a simplified illustration.
+Neither stochastic law estimates the biological distribution of radii.
+Generate the source-backed comparison figure with:
+
+```bash
+python analysis/plot_sampling_laws.py \
+  --source data/derived/radius_baseline_comparison.json \
+  --output /path/to/private/article/figures/Fig3.png
+```
 
 ## Independent microscopy-mask application
 

@@ -97,13 +97,20 @@ from timing. The comparison is workload- and implementation-specific.
 ## `data/derived/radius_baseline_comparison.json`
 
 One middle frame per hash-verified HDF5 run, using a 0.10 radius half-width
-for type-1 nodes and a 2 nm surface-gap threshold. Each record includes the
-exact endpoint edge counts and largest-component fractions, the minimum and
-maximum over 64 seeded independent uniform radius draws, and a scalar cutoff
-calibrated to the possible graph's edge count. The scalar edge disagreement
-is the symmetric difference between its selected pair set and the possible
-pair set. The uniform law and scalar cutoff are illustrative comparators,
-not inferred physical size laws or admissible radius trajectories.
+for type-1 nodes and a 2 nm surface-gap threshold. Schema
+`radius-baselines-2` records exact endpoint edge counts and largest-component
+fractions. `sampling.independent_uniform` gives independent uniform radii for
+each varying node; `sampling.common_uniform` uses one shared uniform factor
+for all varying radii in a graph. Each law has a reproducible seed and nested
+64- and 1024-draw summaries of sampled edge-count and largest-component
+spans, endpoint hits, and component-count ranges. The span fraction divides
+the sampled range by the exact endpoint range; it is null when the exact
+range is zero. `type_pair_cutoffs` records the nominal-gap shift coefficient
+for each type pair and whether it is constant; the equality flags check both
+endpoint edge sets. `scalar_edge_disagreement` is the symmetric difference
+between the single edge-count-matched cutoff and the possible pair set.
+Neither law is inferred from biological data. No Monte Carlo value is used
+as a substitute for the deterministic endpoint certificate.
 
 ## `data/derived/bbbc039_radius_graph.json`
 

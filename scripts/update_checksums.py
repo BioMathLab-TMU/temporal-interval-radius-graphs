@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INCLUDED = [
     "analysis/analyze_bbbc039_masks.py",
     "analysis/compare_radius_uncertainty_baselines.py",
+    "analysis/plot_sampling_laws.py",
     "analysis/analyze_critical_widths.py",
     "analysis/benchmark_pair_search.py",
     "analysis/benchmark_width_sweep.py",
