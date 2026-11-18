@@ -201,6 +201,18 @@ class IntervalRadiusCaseStudyResultsTests(unittest.TestCase):
                 self.assertTrue(np.all(np.asarray(entry["edge_count_draws"]) >= record["guaranteed_edges"]))
                 self.assertTrue(np.all(np.asarray(entry["edge_count_draws"]) <= record["possible_edges"]))
 
+    def test_conditional_monte_carlo_bootstrap_contract(self) -> None:
+        report = json.loads((RESULTS / "correlated_radius_mc_bootstrap.json").read_text(encoding="utf-8"))
+        self.assertEqual(report["schema"], "correlated-radius-mc-bootstrap-1")
+        self.assertEqual(report["repeats"], 400)
+        self.assertEqual({r["width"] for r in report["reports"]}, {0.05, 0.10})
+        for source in report["reports"]:
+            self.assertEqual(len(source["cases"]), 24)
+            for case in source["cases"]:
+                for row in case["rows"]:
+                    self.assertLessEqual(row["mc_bootstrap_q025"], row["mc_bootstrap_q975"])
+                    self.assertGreaterEqual(row["observed_ratio"], 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()

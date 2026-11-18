@@ -134,6 +134,15 @@ with uniform marginals; it is not calibrated to observed protein sizes.
 field meanings are identical; the top-level `width` and per-record `draws`
 state the changed settings.
 
+## `data/derived/correlated_radius_mc_bootstrap.json`
+
+Four hundred joint resamples of graph-draw indices at each of the two tested
+radius widths. The reported 2.5th and 97.5th percentiles quantify only
+finite Monte Carlo uncertainty conditional on each spatial configuration;
+they are not confidence intervals over trajectories, biological systems, or
+synthetic point processes. Shared resampling indices across correlations
+preserve the experiment's common-random-number comparison.
+
 ## `data/derived/bbbc039_radius_graph.json`
 
 Independent external application to the public BBBC039v1 nuclei-mask

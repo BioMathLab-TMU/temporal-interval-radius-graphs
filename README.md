@@ -254,3 +254,7 @@ python analysis/correlated_radius_continuum.py \
 
 The tested variance interpolation is an exploratory hypothesis, not a proved
 law for graph observables or a calibrated biological model.
+`analysis/bootstrap_correlation_error.py` checks finite Monte Carlo
+uncertainty for that comparison using joint resampling across correlation
+levels. Its conditional results are in
+`data/derived/correlated_radius_mc_bootstrap.json`.
